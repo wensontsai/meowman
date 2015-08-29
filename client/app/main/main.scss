@@ -25,3 +25,22 @@
 .navbar-text {
   margin-left: 15px;
 }
+
+.cat-container {
+  display: block;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s linear;
+  opacity: 1;
+  transform: rotate(0deg);
+
+  &:hover {
+      opacity: 0.8;
+  }
+
+  &:active, &.rotate {
+    transform: rotate(360deg);
+  }
+}
