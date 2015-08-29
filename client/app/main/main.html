@@ -10,8 +10,7 @@
 <div class="container text-center">
   <div class="row">
     <div class="col-sm-12">
-      <button class="btn btn-primary" ng-click="addNote()">Start Game!</button>
-      <button class="btn btn-primary" ng-click="play()">Play!</button>
+       <button class="btn btn-primary" ng-click="addNote() && play()">Start round {{list.length + 1}}!</button>
     </div>
   </div>
   <div class="row">

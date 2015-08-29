@@ -1,12 +1,15 @@
 'use strict';
 
 angular.module('meowmanApp')
-  .controller('MainCtrl', function($scope, $http, socket, $interval, $timeout) {
+  .controller('MainCtrl', function($scope, $http, socket, $interval, $timeout, SoundFactory) {
+
+
     $scope.list = [];
 
     $scope.addNote = function() {
       $scope.list.push(Math.floor(Math.random() * 4));
       console.log($scope.list);
+      return true;
     };
 
     $scope.playItem = null;
@@ -16,6 +19,22 @@ angular.module('meowmanApp')
       var intervalID = $interval(function(){
 
         $scope.playItem = $scope.list[index];
+
+        switch($scope.list[index]) {
+          case 0:
+            SoundFactory.meow0.play();
+            break;
+          case 1:
+            SoundFactory.meow1.play();
+            break;
+          case 2:
+            SoundFactory.meow2.play();
+            break;
+          case 3:
+            SoundFactory.meow3.play();
+            break;
+        }
+
         timeoutId = $timeout(function() {
             $scope.playItem = null;
         }, 200);
@@ -27,7 +46,6 @@ angular.module('meowmanApp')
             $interval.cancel(intervalID);
           });
 
-          
           console.log('Interval cleared!');
         }
       }, 1000);
@@ -35,6 +53,23 @@ angular.module('meowmanApp')
 
     $scope.pressButton = function(index) {
       console.log(index);
+
+      switch(index) {
+          case 0:
+            SoundFactory.meow0.play();
+            break;
+          case 1:
+            SoundFactory.meow1.play();
+            break;
+          case 2:
+            SoundFactory.meow2.play();
+            break;
+          case 3:
+            SoundFactory.meow3.play();
+            break;
+        }
+
+
       if (index === $scope.list[$scope.userIndex]) {
         // correct
         $scope.userIndex++;
