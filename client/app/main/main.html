@@ -2,31 +2,24 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+    <h1>Meowman!</h1>
+    <p class="lead">Maximum cats!</p>
   </div>
 </header>
 
-<div class="container">
+<div class="container text-center">
   <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="deleteThing(thing)">&times;</button></a></li>
-      </ul>
+    <div class="col-sm-12">
+      <button class="btn btn-primary" ng-click="addNote()">Start Game!</button>  
+      <button class="btn btn-primary" ng-click="play()">Play!</button> 
     </div>
-  </div>
+  </div> 
+  <div class="row">
+    <div class="col-sm-12">
+      <button class="btn btn-primary" ng-repeat="n in [] | range:4" ng-click="pressButton($index)">
+        {{ $index + 1 }}
+      </button>  
 
-  <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
-      </span>
-    </p>
-  </form>
 </div>
 
 <footer></footer>
