@@ -7,13 +7,19 @@ angular.module('meowmanApp')
     $scope.playing = false;
 
     var startString = 'Start Game!';
-    var endString = 'Quit game!';
+    var nextString = 'Start Next Level!';
+    var endString = 'Quit Game!';
 
     $scope.btnString = startString;
 
     $scope.startGame = function() {
       $scope.playing = true;
       $scope.btnString = endString;
+      $scope.addNote();
+      $scope.play();
+    };
+
+    $scope.startNextLevel = function() {
       $scope.addNote();
       $scope.play();
     };
@@ -28,8 +34,8 @@ angular.module('meowmanApp')
     $scope.play = function() {
       var index = 0;
       var timeoutId;
-      var intervalID = $interval(function(){
 
+      var intervalID = $interval(function() {
         $scope.playItem = $scope.list[index];
 
         switch($scope.list[index]) {
@@ -90,6 +96,9 @@ angular.module('meowmanApp')
           //win
           $scope.userIndex = 0;
           console.log('Win!');
+
+          $scope.btnString = nextString;
+          $scope.playing = false;
         }
       }
       else {
