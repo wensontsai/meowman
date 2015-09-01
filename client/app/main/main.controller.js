@@ -4,15 +4,19 @@ angular.module('meowmanApp')
   .controller('MainCtrl', function($scope, $http, socket, $interval, $timeout, SoundFactory) {
 
     $scope.list = [];
+    $scope.started = false;
     $scope.playing = false;
 
     var startString = 'Start Game!';
     var nextString = 'Start Next Level!';
     var endString = 'Quit Game!';
 
-    $scope.btnString = startString;
+    $scope.startBtnString = startString;
+    $scope.nextBtnString = nextString;
+    $scope.endBtnString = endString;
 
     $scope.startGame = function() {
+      $scope.started = true;
       $scope.playing = true;
       $scope.btnString = endString;
       $scope.addNote();
@@ -31,6 +35,7 @@ angular.module('meowmanApp')
     };
 
     $scope.playItem = null;
+    $scope.time = 1050;
     $scope.play = function() {
       var index = 0;
       var timeoutId;
@@ -56,17 +61,19 @@ angular.module('meowmanApp')
         timeoutId = $timeout(function() {
             $scope.playItem = null;
         }, 200);
-        console.log($scope.list[index]);
         index++;
 
         if (index === $scope.list.length) {
           timeoutId.then(function() {
             $interval.cancel(intervalID);
-          });
 
-          console.log('Interval cleared!');
+            if ($scope.time > 200) {
+              $scope.time -= 50;
+              console.log($scope.time);
+            }
+          });
         }
-      }, 1000);
+      }, $scope.time);
     };
 
     $scope.pressButton = function(index) {
