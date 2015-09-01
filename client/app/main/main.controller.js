@@ -3,8 +3,20 @@
 angular.module('meowmanApp')
   .controller('MainCtrl', function($scope, $http, socket, $interval, $timeout, SoundFactory) {
 
-
     $scope.list = [];
+    $scope.playing = false;
+
+    var startString = 'Start Game!';
+    var endString = 'Quit game!';
+
+    $scope.btnString = startString;
+
+    $scope.startGame = function() {
+      $scope.playing = true;
+      $scope.btnString = endString;
+      $scope.addNote();
+      $scope.play();
+    };
 
     $scope.addNote = function() {
       $scope.list.push(Math.floor(Math.random() * 4));
