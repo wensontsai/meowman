@@ -11,8 +11,8 @@
   <div class="row button-row">
     <div class="col-xs-12">
        <button class="btn btn-primary" ng-if="!started" ng-click="startGame()">{{ startBtnString }}</button>
-       <button class="btn btn-primary" ng-if="started && !playing" ng-click="startGame()">{{ nextBtnString }}</button>
-       <button class="btn btn-danger" ng-if="playing" ng-click="startGame()">{{ endBtnString }}</button>
+       <button class="btn btn-primary" ng-if="started && !playing" ng-click="startNextLevel()">{{ nextBtnString }}</button>
+       <button class="btn btn-danger" ng-if="playing" ng-click="stopGame()">{{ endBtnString }}</button>
     </div>
   </div>
 

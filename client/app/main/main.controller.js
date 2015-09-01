@@ -27,6 +27,10 @@ angular.module('meowmanApp')
       $scope.play();
     };
 
+    $scope.stopGame = function() {
+      $scope.initialize();
+    };
+
     $scope.addNote = function() {
       $scope.list.push(Math.floor(Math.random() * 4));
       console.log($scope.list);
@@ -101,7 +105,6 @@ angular.module('meowmanApp')
         if ($scope.userIndex === $scope.list.length) {
           //win
           $scope.userIndex = 0;
-          console.log('Win!');
 
           $scope.playing = false;
         }
@@ -109,8 +112,6 @@ angular.module('meowmanApp')
       else {
         // incorrect
         $scope.initialize();
-        $scope.userIndex = 0;
-        console.log('Lose!');
       }
     };
 
