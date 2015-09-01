@@ -18,7 +18,6 @@ angular.module('meowmanApp')
     $scope.startGame = function() {
       $scope.started = true;
       $scope.playing = true;
-      $scope.btnString = endString;
       $scope.addNote();
       $scope.play();
     };
@@ -104,15 +103,23 @@ angular.module('meowmanApp')
           $scope.userIndex = 0;
           console.log('Win!');
 
-          $scope.btnString = nextString;
           $scope.playing = false;
         }
       }
       else {
         // incorrect
+        $scope.initialize();
         $scope.userIndex = 0;
         console.log('Lose!');
       }
+    };
+
+    $scope.initialize = function() {
+      $scope.userIndex = 0;
+      $scope.time = 1050;
+      $scope.started = false;
+      $scope.playing = false;
+      $scope.list = [];
     };
 
     $scope.cats = [
